@@ -1,0 +1,53 @@
+.user-devices-container {
+  background-image: url('../commons/images/texture.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: white;
+  font-size: 18px;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.table-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+}
+
+.user-devices-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.user-devices-table th,
+.user-devices-table td {
+  border: 2px solid #333;
+  padding: 8px;
+  text-align: left;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.1);
+  word-wrap: break-word;
+}
+
+.user-devices-table th {
+  background-color: #333;
+}
+
+.empty-row::before {
+  content: '';
+  background-image: url('../commons/images/texture.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}

@@ -1,0 +1,116 @@
+version: '3'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: 'rabbit'  
+      RABBITMQ_DEFAULT_PASS: 'root' 
+    networks:
+      - my_network
+       
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: 'users_management'
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'root'
+    ports:
+      - "5434:5432"
+    networks:
+      - my_network
+      
+  db1:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: 'devices_management'
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'root'
+    ports:
+      - "5433:5432"
+    networks:
+      - my_network
+  db2:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: 'sensors_management'
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'root'
+    ports:
+      - "5435:5432"
+    networks:
+      - my_network
+      
+  usersmanagement:
+    image: users_image
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_IP=db
+      - DB_PORT=5432
+      - DB_DBNAME=users_management
+      - DB_USER=postgres
+      - DB_PASSWORD=root
+    networks:
+      - my_network
+
+  devicesmanagement:
+    image: devices_image
+    ports:
+      - "8081:8081"
+    environment:
+      - DB_IP=db1
+      - DB_PORT=5432
+      - DB_DBNAME=devices_management
+      - DB_USER=postgres
+      - DB_PASSWORD=root
+      - SPRING_RABBITMQ_HOST=rabbitmq
+    networks:
+      - my_network
+      
+  sensorsmanagement:
+    image: sensors_image
+    ports:
+      - "8082:8082"
+    environment:
+      - DB_IP=db2
+      - DB_PORT=5432
+      - DB_DBNAME=sensors_management
+      - DB_USER=postgres
+      - DB_PASSWORD=root
+      - SPRING_RABBITMQ_HOST=rabbitmq
+    networks:
+      - my_network
+      
+  react_frontend:
+    image: fe_image
+    ports:
+      - "3000:3000"
+    networks:
+      - my_network
+
+  chatmicroservice:
+    image: chat_image
+    ports:
+      - "8083:8083"
+    networks:
+      - my_network
+
+networks:
+  my_network:
+   external: true
+   
+volumes:
+  rabbitmq-data:
+   
+    
+

@@ -1,0 +1,97 @@
+.user-list-container {
+    background-image: url('../commons/images/texture.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white;
+    font-size: 18px;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+  }
+  .round-blue-button {
+    background-color: #00008B;
+    color: white;
+    font-size: 18px; 
+    padding: 10px 20px; 
+    border: none;
+    border-radius: 25px; 
+    margin: 10px; 
+    cursor: pointer;
+  }
+  
+  .table-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+  }
+  
+  .user-list-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+  
+  .user-list-table th,
+  .user-list-table td {
+    border: 2px solid #333;
+    padding: 8px;
+    text-align: left;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.1);
+    word-wrap: break-word;
+  }
+  
+  .user-list-table th {
+    background-color: #333;
+  }
+  .insert-user-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url('../commons/images/texture.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white;
+    font-size: 18px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .insert-user-container h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .insert-user-container input,
+  .insert-user-container select {
+    border: 2px solid #00008B;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 5px 0;
+    width: 300px;
+    font-size: 16px;
+  }
+  
+  .insert-user-container select {
+    width: 310px;
+  }
+  
+  .insert-user-container button {
+    background-color: #00008B;
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    margin: 20px;
+    cursor: pointer;
+  }
+  
+  
